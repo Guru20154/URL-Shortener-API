@@ -8,11 +8,11 @@ dotenv.config({
 
 connectDB()
 .then(()=>{
-    app.on("error",(error)=>{
-        console.log("MONGO ERROR: ", error)
-    })
     app.listen(process.env.PORT || 4000,()=>{
         console.log(`Listening on port: ${process.env.PORT}`)
+    })
+    app.on("error",(error)=>{
+        console.log("MONGO ERROR: ", error)
     })
 })
 .catch((err) =>{

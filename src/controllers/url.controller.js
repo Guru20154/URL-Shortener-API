@@ -45,7 +45,6 @@ const shorten = asyncHandler(async (req, res) => {
     }
 });
 
-
 const redirect = asyncHandler(async (req, res) => {
     const { shortId } = req.params;
 

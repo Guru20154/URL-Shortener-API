@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { Url } from "../models/url.model.js";
+import { asyncHandler } from "../../asyncHandler.js";
 
 const isValidUrl = (url) => {
     try {
@@ -10,7 +11,7 @@ const isValidUrl = (url) => {
     }
 };
 
-const shorten = async (req, res) => {
+const shorten = asyncHandler(async (req, res) => {
     const { url } = req.body;
 
     if (!url) {
@@ -42,10 +43,10 @@ const shorten = async (req, res) => {
         console.error(error);
         res.status(500).json({ error: "Failed to shorten URL" });
     }
-};
+});
 
 
-const redirect = async (req, res) => {
+const redirect = asyncHandler(async (req, res) => {
     const { shortId } = req.params;
 
     try {
@@ -64,9 +65,9 @@ const redirect = async (req, res) => {
         console.error(error);
         res.status(500).json({ error: "Failed to redirect to the original URL" });
     }
-}
+});
 
-const stats = async (req, res) => {
+const stats = asyncHandler(async (req, res) => {
     const { shortId } = req.params;
 
     try {
@@ -85,6 +86,6 @@ const stats = async (req, res) => {
         console.error(error);
         res.status(500).json({ error: "Failed to retrieve statistics" });
     }
-}
+});
 
 export {shorten,redirect, stats}

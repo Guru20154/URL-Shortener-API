@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import { Url } from "../models/url.model.js";
-import { asyncHandler } from "../../asyncHandler.js";
+import { asyncHandler } from "../asyncHandler.js";
 
 const isValidUrl = (url) => {
     try {

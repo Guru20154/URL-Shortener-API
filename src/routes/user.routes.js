@@ -11,6 +11,10 @@ const limiter = rateLimit({
 });
 router.use(limiter);
 
+router.get('/',  (req, res) => {
+    res.send('URL shortener!')
+});
+
 router.post('/shorten', shorten);
 
 router.get('/:shortId', redirect);

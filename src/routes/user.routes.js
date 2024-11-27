@@ -9,16 +9,16 @@ const limiter = rateLimit({
     max: 100, 
     message: "Too many requests from this IP, please try again later.",
 });
-router.use(limiter);
+router.route.use(limiter);
 
-router.get('/',  (req, res) => {
+router.route('/').get((req, res) => {
     res.send('URL shortener!')
 });
 
-router.post('/shorten', shorten);
+router.route('/shorten').post(shorten);
 
-router.get('/:shortId', redirect);
+router.route('/:shortId').get( redirect);
 
-router.get('/stats/:shortId', stats);
+router.route('/stats/:shortId').get(stats);
 
 export default router;

@@ -10,7 +10,6 @@ connectDB()
 .then(()=>{
     app.on("error",(error)=>{
         console.log("MONGO ERROR: ", error)
-        throw error
     })
     app.listen(process.env.PORT || 4000,()=>{
         console.log(`Listening on port: ${process.env.PORT}`)
